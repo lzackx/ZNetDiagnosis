@@ -1,0 +1,16 @@
+PODS:
+  - ZNetDiagnosis (1.0.0)
+
+DEPENDENCIES:
+  - ZNetDiagnosis (from `../`)
+
+EXTERNAL SOURCES:
+  ZNetDiagnosis:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ZNetDiagnosis: 71224e82781ae10ec373bc2d3f4d6a3d36f28a1a
+
+PODFILE CHECKSUM: 571d8f424f229a316649ca8de2bbdc6611f70ea6
+
+COCOAPODS: 1.11.3
