@@ -1,5 +1,28 @@
 PODS:
-  - ZNetDiagnosis (1.0.0)
+  - ZNetDiagnosis (1.0.0):
+    - ZNetDiagnosis/All (= 1.0.0)
+  - ZNetDiagnosis/All (1.0.0):
+    - ZNetDiagnosis/Core
+    - ZNetDiagnosis/DNS
+    - ZNetDiagnosis/Lan
+    - ZNetDiagnosis/Ping
+    - ZNetDiagnosis/Port
+    - ZNetDiagnosis/Reachability
+    - ZNetDiagnosis/Traceroute
+  - ZNetDiagnosis/Core (1.0.0)
+  - ZNetDiagnosis/DNS (1.0.0):
+    - ZNetDiagnosis/Core
+  - ZNetDiagnosis/Lan (1.0.0):
+    - ZNetDiagnosis/Core
+  - ZNetDiagnosis/Ping (1.0.0):
+    - ZNetDiagnosis/Core
+  - ZNetDiagnosis/Port (1.0.0):
+    - ZNetDiagnosis/Core
+  - ZNetDiagnosis/Reachability (1.0.0):
+    - ZNetDiagnosis/Core
+  - ZNetDiagnosis/Traceroute (1.0.0):
+    - ZNetDiagnosis/Core
+    - ZNetDiagnosis/DNS
 
 DEPENDENCIES:
   - ZNetDiagnosis (from `../`)
@@ -9,7 +32,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ZNetDiagnosis: 71224e82781ae10ec373bc2d3f4d6a3d36f28a1a
+  ZNetDiagnosis: 20511beb75145b1a9d7a6460da972a56fee88ab3
 
 PODFILE CHECKSUM: 571d8f424f229a316649ca8de2bbdc6611f70ea6
 
