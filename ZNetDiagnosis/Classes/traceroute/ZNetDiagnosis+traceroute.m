@@ -9,7 +9,7 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-#import "ZNDTracerouteICMPOperation.h"
+#import "ZNDTracerouteMixOperation.h"
 
 
 @implementation ZNetDiagnosis (traceroute)
@@ -64,8 +64,8 @@
     
     ZNDTracerouteOperation *tracerouteOperation;
     switch (configuration.tracerouteProtocol) {
-        case ZNDTracerouteProtocolICMP:
-            tracerouteOperation = [[ZNDTracerouteICMPOperation alloc] initWithConfiguration:configuration];
+        case ZNDTracerouteProtocolMix:
+            tracerouteOperation = [[ZNDTracerouteMixOperation alloc] initWithConfiguration:configuration];
             break;
         default:
             break;

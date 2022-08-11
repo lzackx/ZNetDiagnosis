@@ -1,11 +1,11 @@
 //
-//  ZNDTracerouteUDP.m
+//  ZNDTracerouteMixOperation.m
 //  ZNetDiagnosis
 //
 //  Created by lZackx on 2022/8/8.
 //
 
-#import "ZNDTracerouteICMPOperation.h"
+#import "ZNDTracerouteMixOperation.h"
 #import "ZNetDiagnosisDefined.h"
 #import "ZNDICMPStructure.h"
 
@@ -16,13 +16,13 @@
 #include <sys/time.h>
 
 
-@interface ZNDTracerouteICMPOperation ()
+@interface ZNDTracerouteMixOperation ()
 
 @property (nonatomic, readwrite, strong) NSMutableDictionary *defaultInfo;
 
 @end
 
-@implementation ZNDTracerouteICMPOperation
+@implementation ZNDTracerouteMixOperation
 
 // MARK: - Life Cycle
 - (instancetype)initWithConfiguration:(ZNDTracerouteConfiguration *)configuration {

@@ -1,5 +1,5 @@
 //
-//  ZNDTracerouteUDP.h
+//  ZNDTracerouteMixOperation.h
 //  ZNetDiagnosis
 //
 //  Created by lZackx on 2022/8/8.
@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZNDTracerouteICMPOperation : ZNDTracerouteOperation
+@interface ZNDTracerouteMixOperation : ZNDTracerouteOperation
 
 @end
 

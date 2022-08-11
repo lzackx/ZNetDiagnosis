@@ -27,11 +27,9 @@
 }
 
 - (void)traceroute {
-    
-    
     ZNDTracerouteConfiguration *configration = [[ZNDTracerouteConfiguration alloc] init];
     configration.target = @"m.qeeq.com";
-    configration.tracerouteProtocol = ZNDTracerouteProtocolICMP;
+    configration.tracerouteProtocol = ZNDTracerouteProtocolMix;
     configration.attempt = 3;
     configration.maxTTL = 64;
     

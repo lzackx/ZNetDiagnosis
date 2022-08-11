@@ -1,5 +1,5 @@
 //
-//  ZNDPingUDP.h
+//  ZNDPingICMPOperation.h
 //  ZNetDiagnosis
 //
 //  Created by lZackx on 2022/8/8.
