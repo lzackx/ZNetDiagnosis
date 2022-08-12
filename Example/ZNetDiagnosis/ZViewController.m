@@ -28,7 +28,7 @@
 
 - (void)traceroute {
     ZNDTracerouteConfiguration *configration = [[ZNDTracerouteConfiguration alloc] init];
-    configration.target = @"m.zuzuche.com";
+    configration.target = @"m.google.com";
     configration.tracerouteProtocol = ZNDTracerouteProtocolICMP;
     configration.attempt = 3;
     configration.maxTTL = 64;
