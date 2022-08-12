@@ -35,15 +35,17 @@ __Check_Compile_Time(offsetof(ICMPPacketHeader, checksum) == 2);
 __Check_Compile_Time(offsetof(ICMPPacketHeader, identifier) == 4);
 __Check_Compile_Time(offsetof(ICMPPacketHeader, sequenceNumber) == 6);
 
-enum {
-    ICMPv4TypeEchoRequest = 8,          ///< The ICMP `type` for a ping request; in this case `code` is always 0.
-    ICMPv4TypeEchoReply   = 0           ///< The ICMP `type` for a ping response; in this case `code` is always 0.
-};
+typedef enum ICMPv4Type {
+    ICMPv4TypeEchoReply   = 0,
+    ICMPv4TypeEchoRequest = 8,
+    ICMPv4TypeEchoTimeout = 11
+}ICMPv4Type;
 
-enum {
-    ICMPv6TypeEchoRequest = 128,        ///< The ICMP `type` for a ping request; in this case `code` is always 0.
-    ICMPv6TypeEchoReply   = 129         ///< The ICMP `type` for a ping response; in this case `code` is always 0.
-};
+typedef enum ICMPv6Type{
+    ICMPv6TypeEchoTimeout = 3,
+    ICMPv6TypeEchoRequest = 128,
+    ICMPv6TypeEchoReply   = 129
+}ICMPv6Type;
 
 
 

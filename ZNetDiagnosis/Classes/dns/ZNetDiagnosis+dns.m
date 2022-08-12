@@ -132,7 +132,6 @@
     return [NSArray arrayWithArray:result];
 }
 
-
 - (NSArray *)ipv6ForDomainName:(NSString *)hostName {
     const char *hostN = [hostName UTF8String];
     struct hostent *phot;
@@ -166,6 +165,33 @@
     }
     return [NSArray arrayWithArray:result];
 }
+
+//- (NSArray<NSString *> *)resolveHost:(NSString *)hostname {
+//    NSMutableArray<NSString *> *resolve = [NSMutableArray array];
+//    CFHostRef hostRef = CFHostCreateWithName(kCFAllocatorDefault, (__bridge CFStringRef)hostname);
+//    if (hostRef != NULL) {
+//        Boolean result = CFHostStartInfoResolution(hostRef, kCFHostAddresses, NULL); // 开始DNS解析
+//        if (result == true) {
+//            CFArrayRef addresses = CFHostGetAddressing(hostRef, &result);
+//            for(int i = 0; i < CFArrayGetCount(addresses); i++){
+//                CFDataRef saData = (CFDataRef)CFArrayGetValueAtIndex(addresses, i);
+//                struct sockaddr *addressGeneric = (struct sockaddr *)CFDataGetBytePtr(saData);
+//
+//                if (addressGeneric != NULL) {
+//                    if (addressGeneric->sa_family == AF_INET) {
+//                        struct sockaddr_in *remoteAddr = (struct sockaddr_in *)CFDataGetBytePtr(saData);
+//                        [resolve addObject:[self formatIPv4Address:remoteAddr->sin_addr]];
+//                    } else if (addressGeneric->sa_family == AF_INET6) {
+//                        struct sockaddr_in6 *remoteAddr = (struct sockaddr_in6 *)CFDataGetBytePtr(saData);
+//                        [resolve addObject:[self formatIPv6Address:remoteAddr->sin6_addr]];
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    return [resolve copy];
+//}
 
 - (NSArray *)dnsServers {
     res_state res = malloc(sizeof(struct __res_state));

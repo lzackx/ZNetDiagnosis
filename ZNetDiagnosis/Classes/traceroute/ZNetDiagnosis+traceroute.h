@@ -18,16 +18,16 @@ typedef void (^ZNDTracerouteCompletion)(NSDictionary *info);
 
 @interface ZNetDiagnosis (traceroute) <ZNDTracerouteOperationDelegate>
 
-@property (nonatomic, readwrite, copy) ZNDTracerouteSuccess success;
-@property (nonatomic, readwrite, copy) ZNDTracerouteFailure failure;
-@property (nonatomic, readwrite, copy) ZNDTracerouteCompletion completion;
+@property (nonatomic, readwrite, copy) ZNDTracerouteSuccess tracerouteSuccess;
+@property (nonatomic, readwrite, copy) ZNDTracerouteFailure tracerouteFailure;
+@property (nonatomic, readwrite, copy) ZNDTracerouteCompletion tracerouteCompletion;
 
 - (void)tracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration;
 
 - (void)tracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration
-                      success:(ZNDTracerouteSuccess _Nullable)success
-                      failure:(ZNDTracerouteFailure _Nullable)failure
-                   completion:(ZNDTracerouteCompletion _Nullable)completion;
+                            success:(ZNDTracerouteSuccess _Nullable)success
+                            failure:(ZNDTracerouteFailure _Nullable)failure
+                         completion:(ZNDTracerouteCompletion _Nullable)completion;
 
 @end
 

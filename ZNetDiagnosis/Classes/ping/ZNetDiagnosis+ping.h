@@ -18,9 +18,9 @@ typedef void (^ZNDPingCompletion)(NSDictionary *info);
 
 @interface ZNetDiagnosis (ping) <ZNDPingOperationDelegate>
 
-@property (nonatomic, readwrite, copy) ZNDPingSuccess success;
-@property (nonatomic, readwrite, copy) ZNDPingFailure failure;
-@property (nonatomic, readwrite, copy) ZNDPingCompletion completion;
+@property (nonatomic, readwrite, copy) ZNDPingSuccess pingSuccess;
+@property (nonatomic, readwrite, copy) ZNDPingFailure pingFailure;
+@property (nonatomic, readwrite, copy) ZNDPingCompletion pingCompletion;
 
 - (void)pingWithConfiguration:(ZNDPingConfiguration *)configuration;
 

@@ -28,10 +28,11 @@
 
 - (void)traceroute {
     ZNDTracerouteConfiguration *configration = [[ZNDTracerouteConfiguration alloc] init];
-    configration.target = @"m.qeeq.com";
-    configration.tracerouteProtocol = ZNDTracerouteProtocolMix;
+    configration.target = @"m.zuzuche.com";
+    configration.tracerouteProtocol = ZNDTracerouteProtocolICMP;
     configration.attempt = 3;
     configration.maxTTL = 64;
+    configration.port = 80;
     
     [[ZNetDiagnosis shared] tracerouteWithConfiguration:configration success:^(NSDictionary * _Nonnull info) {
 //        NSLog(@"%@", info);

@@ -18,6 +18,7 @@
         _port = 32100;
         _maxTTL = 64;
         _attempt = 3;
+        _timeout = 1;
         _tracerouteProtocol = ZNDTracerouteProtocolICMP;
     }
     return self;

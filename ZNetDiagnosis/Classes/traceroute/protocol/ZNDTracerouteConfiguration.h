@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger, ZNDTracerouteProtocol) {
 @property (nonatomic, readwrite, assign) NSUInteger port;
 @property (nonatomic, readwrite, assign) NSInteger maxTTL;
 @property (nonatomic, readwrite, assign) NSInteger attempt;
+@property (nonatomic, readwrite, assign) NSInteger timeout; // unit: second
 
 @property (nonatomic, readwrite, assign) ZNDTracerouteProtocol tracerouteProtocol;
 

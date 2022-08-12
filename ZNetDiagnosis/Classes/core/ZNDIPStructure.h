@@ -17,33 +17,51 @@
  *      it to us for no obvious reason.
  */
 
-struct IPv4PacketHeader {
-    uint8_t     versionAndHeaderLength;
-    uint8_t     differentiatedServices;
-    uint16_t    totalLength;
-    uint16_t    identification;
-    uint16_t    flagsAndFragmentOffset;
-    uint8_t     timeToLive;
-    uint8_t     protocol;
-    uint16_t    headerChecksum;
-    uint8_t     sourceAddress[4];
-    uint8_t     destinationAddress[4];
+typedef struct IPv4PacketHeader {
+    uint8_t versionAndHeaderLength;
+    uint8_t serviceType;
+    uint16_t totalLength;
+    uint16_t identifier;
+    uint16_t flagsAndFragmentOffset;
+    uint8_t timeToLive;
+    uint8_t protocol; // https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml
+    uint16_t checksum;
+    uint8_t sourceAddress[4];
+    uint8_t destinationAddress[4];
     // options...
     // data...
-};
-typedef struct IPv4PacketHeader IPv4PacketHeader;
+} IPv4PacketHeader;
 
+// IPv4PacketHeader编译期检查
 __Check_Compile_Time(sizeof(IPv4PacketHeader) == 20);
 __Check_Compile_Time(offsetof(IPv4PacketHeader, versionAndHeaderLength) == 0);
-__Check_Compile_Time(offsetof(IPv4PacketHeader, differentiatedServices) == 1);
+__Check_Compile_Time(offsetof(IPv4PacketHeader, serviceType) == 1);
 __Check_Compile_Time(offsetof(IPv4PacketHeader, totalLength) == 2);
-__Check_Compile_Time(offsetof(IPv4PacketHeader, identification) == 4);
+__Check_Compile_Time(offsetof(IPv4PacketHeader, identifier) == 4);
 __Check_Compile_Time(offsetof(IPv4PacketHeader, flagsAndFragmentOffset) == 6);
 __Check_Compile_Time(offsetof(IPv4PacketHeader, timeToLive) == 8);
 __Check_Compile_Time(offsetof(IPv4PacketHeader, protocol) == 9);
-__Check_Compile_Time(offsetof(IPv4PacketHeader, headerChecksum) == 10);
+__Check_Compile_Time(offsetof(IPv4PacketHeader, checksum) == 10);
 __Check_Compile_Time(offsetof(IPv4PacketHeader, sourceAddress) == 12);
 __Check_Compile_Time(offsetof(IPv4PacketHeader, destinationAddress) == 16);
+
+typedef struct IPv6PacketHeader {
+    uint32_t padding;
+    uint16_t payloadLength;
+    uint8_t nextHeader;
+    uint8_t hopLimit;
+    uint8_t sourceAddress[16];
+    uint8_t destAddress[16];
+    // data
+} IPv6PacketHeader;
+
+// IPv6PacketHeader编译期检查
+__Check_Compile_Time(offsetof(IPv6PacketHeader, padding) == 0);
+__Check_Compile_Time(offsetof(IPv6PacketHeader, payloadLength) == 4);
+__Check_Compile_Time(offsetof(IPv6PacketHeader, nextHeader) == 6);
+__Check_Compile_Time(offsetof(IPv6PacketHeader, hopLimit) == 7);
+__Check_Compile_Time(offsetof(IPv6PacketHeader, sourceAddress) == 8);
+__Check_Compile_Time(offsetof(IPv6PacketHeader, destAddress) == 24);
 
 
 /*! Calculates an IP checksum.

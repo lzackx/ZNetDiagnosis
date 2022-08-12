@@ -15,31 +15,31 @@
 @implementation ZNetDiagnosis (ping)
 
 // MARK: - Getter / Setter
-- (ZNDPingSuccess)success {
-    ZNDPingSuccess block = objc_getAssociatedObject(self, @selector(success));
+- (ZNDPingSuccess)pingSuccess {
+    ZNDPingSuccess block = objc_getAssociatedObject(self, @selector(pingSuccess));
     return block;
 }
 
-- (void)setSuccess:(ZNDPingSuccess)success {
-    objc_setAssociatedObject(self, @selector(success), success, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setPingSuccess:(ZNDPingSuccess)success {
+    objc_setAssociatedObject(self, @selector(pingSuccess), success, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (ZNDPingFailure)failure {
-    ZNDPingFailure block = objc_getAssociatedObject(self, @selector(failure));
+- (ZNDPingFailure)pingFailure {
+    ZNDPingFailure block = objc_getAssociatedObject(self, @selector(pingFailure));
     return block;
 }
 
-- (void)setFailure:(ZNDPingFailure)failure {
-    objc_setAssociatedObject(self, @selector(failure), failure, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setPingFailure:(ZNDPingFailure)failure {
+    objc_setAssociatedObject(self, @selector(pingFailure), failure, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (ZNDPingCompletion)completion {
-    ZNDPingCompletion block = objc_getAssociatedObject(self, @selector(completion));
+- (ZNDPingCompletion)pingCompletion {
+    ZNDPingCompletion block = objc_getAssociatedObject(self, @selector(pingCompletion));
     return block;
 }
 
-- (void)setCompletion:(ZNDPingCompletion)completion {
-    objc_setAssociatedObject(self, @selector(completion), completion, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setPingCompletion:(ZNDPingCompletion)completion {
+    objc_setAssociatedObject(self, @selector(pingCompletion), completion, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 // MARK: - ping
@@ -53,13 +53,13 @@
                    completion:(ZNDPingCompletion _Nullable)completion {
     
     if (success) {
-        [self setSuccess:success];
+        [self setPingSuccess:success];
     }
     if (failure) {
-        [self setFailure:failure];
+        [self setPingFailure:failure];
     }
     if (completion) {
-        [self setCompletion:completion];
+        [self setPingCompletion:completion];
     }
     
     ZNDPingOperation *pingOperation;
@@ -77,24 +77,24 @@
 // MARK: - ZNDPingOperationDelegate
 - (void)ping:(ZNDPingOperation *)ping didSucceedWithInfo:(NSDictionary *)info {
     ZLog(@"%s => info: %@", __FUNCTION__, info);
-    if ([self success]) {
-        ZNDPingSuccess success = [self success];
+    if ([self pingSuccess]) {
+        ZNDPingSuccess success = [self pingSuccess];
         success(info);
     }
 }
 
 - (void)ping:(ZNDPingOperation *)ping didFailWithInfo:(NSDictionary *)info {
     ZLog(@"%s => info: %@", __FUNCTION__, info);
-    if ([self failure]) {
-        ZNDPingFailure failure = [self failure];
+    if ([self pingFailure]) {
+        ZNDPingFailure failure = [self pingFailure];
         failure(info);
     }
 }
 
 - (void)ping:(ZNDPingOperation *)ping didCompleteWithInfo:(NSDictionary *)info {
     ZLog(@"%s => info: %@", __FUNCTION__, info);
-    if ([self completion]) {
-        ZNDPingCompletion completion = [self completion];
+    if ([self pingCompletion]) {
+        ZNDPingCompletion completion = [self pingCompletion];
         completion(info);
     }
 }
