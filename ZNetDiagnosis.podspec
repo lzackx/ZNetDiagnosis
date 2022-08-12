@@ -22,22 +22,22 @@ Pod::Spec.new do |s|
 
   s.subspec "All" do |ss|
     ss.dependency "ZNetDiagnosis/Core"
-    ss.dependency "ZNetDiagnosis/Reachability"
+    # ss.dependency "ZNetDiagnosis/Reachability"
     ss.dependency "ZNetDiagnosis/Ping"
     ss.dependency "ZNetDiagnosis/Traceroute"
     ss.dependency "ZNetDiagnosis/DNS"
-    ss.dependency "ZNetDiagnosis/Port"
-    ss.dependency "ZNetDiagnosis/Lan"
+    # ss.dependency "ZNetDiagnosis/Port"
+    # ss.dependency "ZNetDiagnosis/Lan"
   end
 
   s.subspec "Core" do |ss|
     ss.source_files = "ZNetDiagnosis/Classes/core/**/*"
   end
 
-  s.subspec "Reachability" do |ss|
-    ss.source_files = "ZNetDiagnosis/Classes/reachability/**/*"
-    ss.dependency "ZNetDiagnosis/Core"
-  end
+  # s.subspec "Reachability" do |ss|
+  #   ss.source_files = "ZNetDiagnosis/Classes/reachability/**/*"
+  #   ss.dependency "ZNetDiagnosis/Core"
+  # end
 
   s.subspec "DNS" do |ss|
     ss.source_files = "ZNetDiagnosis/Classes/dns/**/*"
@@ -58,14 +58,14 @@ Pod::Spec.new do |s|
     ss.dependency "ZNetDiagnosis/DNS"
   end
 
-  s.subspec "Port" do |ss|
-    ss.source_files = "ZNetDiagnosis/Classes/port/**/*"
-    ss.dependency "ZNetDiagnosis/Core"
-  end
+  # s.subspec "Port" do |ss|
+  #   ss.source_files = "ZNetDiagnosis/Classes/port/**/*"
+  #   ss.dependency "ZNetDiagnosis/Core"
+  # end
 
-  s.subspec "Lan" do |ss|
-    ss.source_files = "ZNetDiagnosis/Classes/lan/**/*"
-    ss.dependency "ZNetDiagnosis/Core"
-  end
+  # s.subspec "Lan" do |ss|
+  #   ss.source_files = "ZNetDiagnosis/Classes/lan/**/*"
+  #   ss.dependency "ZNetDiagnosis/Core"
+  # end
 
 end
