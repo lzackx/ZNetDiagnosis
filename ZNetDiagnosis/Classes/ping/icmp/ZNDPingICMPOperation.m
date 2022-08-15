@@ -296,8 +296,12 @@ didReceiveUnexpectedPacket:(NSData *)packet {
     if ([self.delegate respondsToSelector:@selector(ping:didFailWithInfo:)]) {
         [self.delegate ping:self didFailWithInfo:info];
     }
-    [self.ping stop];
-    self.shouldStop = YES;
+    if (self.sent >= self.configuration.attempt) {
+        [self.ping stop];
+        self.shouldStop = YES;
+    } else {
+        [self sendWithPing:self.ping];
+    }
 }
 
 // MARK: - Parse

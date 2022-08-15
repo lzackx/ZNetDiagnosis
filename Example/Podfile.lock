@@ -4,21 +4,12 @@ PODS:
   - ZNetDiagnosis/All (1.0.0):
     - ZNetDiagnosis/Core
     - ZNetDiagnosis/DNS
-    - ZNetDiagnosis/Lan
     - ZNetDiagnosis/Ping
-    - ZNetDiagnosis/Port
-    - ZNetDiagnosis/Reachability
     - ZNetDiagnosis/Traceroute
   - ZNetDiagnosis/Core (1.0.0)
   - ZNetDiagnosis/DNS (1.0.0):
     - ZNetDiagnosis/Core
-  - ZNetDiagnosis/Lan (1.0.0):
-    - ZNetDiagnosis/Core
   - ZNetDiagnosis/Ping (1.0.0):
-    - ZNetDiagnosis/Core
-  - ZNetDiagnosis/Port (1.0.0):
-    - ZNetDiagnosis/Core
-  - ZNetDiagnosis/Reachability (1.0.0):
     - ZNetDiagnosis/Core
   - ZNetDiagnosis/Traceroute (1.0.0):
     - ZNetDiagnosis/Core
@@ -32,8 +23,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ZNetDiagnosis: 20511beb75145b1a9d7a6460da972a56fee88ab3
+  ZNetDiagnosis: dc889b1b9c72ce7828fa558112f217cd195c1916
 
-PODFILE CHECKSUM: 571d8f424f229a316649ca8de2bbdc6611f70ea6
+PODFILE CHECKSUM: 6970533c27de28528432515471a65a8d25dfc2c7
 
 COCOAPODS: 1.11.3
