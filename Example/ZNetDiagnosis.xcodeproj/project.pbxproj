@@ -39,7 +39,7 @@
 /* Begin PBXFileReference section */
 		18498EE89A74646B1BA8A2D0 /* Pods-ZNetDiagnosis_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZNetDiagnosis_Example.debug.xcconfig"; path = "Target Support Files/Pods-ZNetDiagnosis_Example/Pods-ZNetDiagnosis_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		23B768AD5021EBAF1382D2BC /* Pods-ZNetDiagnosis_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZNetDiagnosis_Example.release.xcconfig"; path = "Target Support Files/Pods-ZNetDiagnosis_Example/Pods-ZNetDiagnosis_Example.release.xcconfig"; sourceTree = "<group>"; };
-		37BC62BF62D0677E7ED552C8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		37BC62BF62D0677E7ED552C8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* ZNetDiagnosis_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZNetDiagnosis_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,9 +61,9 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		69736B5540B53BC5BC997B82 /* Pods_ZNetDiagnosis_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZNetDiagnosis_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7AD5478FD082A1B47B9CC856 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7AD5478FD082A1B47B9CC856 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9145B5D4B229338037863623 /* ZNetDiagnosis.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ZNetDiagnosis.podspec; path = ../ZNetDiagnosis.podspec; sourceTree = "<group>"; };
+		9145B5D4B229338037863623 /* ZNetDiagnosis.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZNetDiagnosis.podspec; path = ../ZNetDiagnosis.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BE9999FA5853C6AF926DD296 /* Pods_ZNetDiagnosis_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZNetDiagnosis_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A389F45341C037287D3B94 /* Pods-ZNetDiagnosis_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZNetDiagnosis_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ZNetDiagnosis_Tests/Pods-ZNetDiagnosis_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC68B44D563A311742435262 /* Pods-ZNetDiagnosis_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZNetDiagnosis_Tests.release.xcconfig"; path = "Target Support Files/Pods-ZNetDiagnosis_Tests/Pods-ZNetDiagnosis_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,7 +193,6 @@
 				F3A389F45341C037287D3B94 /* Pods-ZNetDiagnosis_Tests.debug.xcconfig */,
 				FC68B44D563A311742435262 /* Pods-ZNetDiagnosis_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -258,6 +257,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
