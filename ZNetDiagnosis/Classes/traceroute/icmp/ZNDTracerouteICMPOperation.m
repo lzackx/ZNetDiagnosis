@@ -169,7 +169,8 @@ typedef enum ZNDTracerouteReceivedType{
                               addr,
                               addrLen);
         if (sent < 0) {
-            [durations addObject:@"*"];
+            [receivedModel.replyIPs addObject:@"*\t"];
+            [durations addObject:@"0"];
             continue;
         }
         
@@ -182,7 +183,8 @@ typedef enum ZNDTracerouteReceivedType{
                                      (struct sockaddr*)&remoteAddr,
                                      &addrLen);
         if (resultLen < 0) {
-            [durations addObject:@"*"];
+            [receivedModel.replyIPs addObject:@"*\t"];
+            [durations addObject:@"0"];
             continue;
         } else {
             receiveReply = YES;
@@ -200,21 +202,24 @@ typedef enum ZNDTracerouteReceivedType{
                 replyIP = [NSString stringWithUTF8String:ip];
             }
             
+            if (replyIP.length > 0) {
+                [receivedModel.replyIPs addObject:replyIP];
+            } else {
+                [receivedModel.replyIPs addObject:@"*\t"];
+            }
+            
             // Parse Packet
             if ([[ZNetDiagnosis shared] isTimeoutPacket:buff length:(int)resultLen isIPv6:isIPv6]) {
                 // On the road
                 [durations addObject:[NSString stringWithFormat:@"%@", @(duration)]];
-                receivedModel.replyIP = replyIP;
             } else if ([[ZNetDiagnosis shared] isEchoReplyPacket:buff length:(int)resultLen isIPv6:isIPv6] &&
                        [replyIP isEqualToString:[self.defaultInfo objectForKey:@"ip"]]) {
                 // Reach Target
                 [durations addObject:@(duration)];
-                receivedModel.replyIP = replyIP;
                 finished = YES;
             } else {
                 // Failed
-                receivedModel.replyIP = @"* * *";
-                [durations addObject:@"*"];
+                [durations addObject:@"0"];
             }
         }
     }

@@ -160,7 +160,6 @@
     }
     NSArray *IPV6DNSs = [self ipv6ForDomainName:domainName];
     if (IPV6DNSs && IPV6DNSs.count > 0) {
-        [result removeAllObjects];
         [result addObjectsFromArray:IPV6DNSs];
     }
     return [NSArray arrayWithArray:result];

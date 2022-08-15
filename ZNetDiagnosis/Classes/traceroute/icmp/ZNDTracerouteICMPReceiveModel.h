@@ -19,8 +19,8 @@ typedef enum ZNDTracerouteICMPReceiveStatus {
 
 @property (nonatomic, readwrite, copy) NSString *targetIP;
 @property (nonatomic, readonly, assign) NSInteger ttl;
-@property (nonatomic, readwrite, copy) NSString* replyIP;
-@property (nonatomic, readwrite, strong) NSMutableArray *durations; // unit: ms
+@property (nonatomic, readwrite, strong) NSMutableArray<NSString *> *replyIPs;
+@property (nonatomic, readwrite, strong) NSMutableArray<NSString *> *durations; // unit: ms
 @property (nonatomic, assign) ZNDTracerouteICMPReceiveStatus status;
 
 - (instancetype)initWithTTL:(NSInteger)ttl;

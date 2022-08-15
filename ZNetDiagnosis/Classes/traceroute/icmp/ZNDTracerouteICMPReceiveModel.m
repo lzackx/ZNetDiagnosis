@@ -12,7 +12,7 @@
 - (instancetype)initWithTTL:(NSInteger)ttl {
     if (self = [super init]) {
         _targetIP = [NSString string];
-        _replyIP = [NSString string];
+        _replyIPs = [NSMutableArray array];
         _ttl = ttl;
         _durations = [NSMutableArray array];
         _status = ZNDTracerouteICMPReceiveStatusReceiving;

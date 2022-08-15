@@ -16,7 +16,7 @@
     if (self) {
         _target = [NSString string];
         _maxTTL = 64;
-        _attempt = 3;
+        _attempt = 4;
         _timeout = 1;
         _pingProtocol = ZNDPingProtocolICMP;
     }
