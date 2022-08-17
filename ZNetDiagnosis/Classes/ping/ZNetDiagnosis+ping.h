@@ -22,6 +22,11 @@ typedef void (^ZNDPingCompletion)(NSDictionary *info);
 @property (nonatomic, readwrite, copy) ZNDPingFailure pingFailure;
 @property (nonatomic, readwrite, copy) ZNDPingCompletion pingCompletion;
 
+- (ZNDPingOperation *)createPingWithConfiguration:(ZNDPingConfiguration *)configuration
+                                          success:(ZNDPingSuccess _Nullable)success
+                                          failure:(ZNDPingFailure _Nullable)failure
+                                       completion:(ZNDPingCompletion _Nullable)completion;
+
 - (void)pingWithConfiguration:(ZNDPingConfiguration *)configuration;
 
 - (void)pingWithConfiguration:(ZNDPingConfiguration *)configuration

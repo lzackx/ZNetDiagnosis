@@ -20,10 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-    [self traceroute];
     
-//    [self ping];
+    [self ping];
+    [self traceroute];
 }
 
 - (void)traceroute {
@@ -35,11 +34,11 @@
     configration.port = 80;
     
     [[ZNetDiagnosis shared] tracerouteWithConfiguration:configration success:^(NSDictionary * _Nonnull info) {
-//        NSLog(@"%@", info);
+        NSLog(@"%@", info);
     } failure:^(NSDictionary * _Nonnull info) {
-//        NSLog(@"%@", info);
+        NSLog(@"%@", info);
     } completion:^(NSDictionary * _Nonnull info) {
-//        NSLog(@"%@", info);
+        NSLog(@"%@", info);
     }];
     
     [[ZNetDiagnosis shared] tracerouteWithConfiguration:configration];

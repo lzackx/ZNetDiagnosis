@@ -49,7 +49,7 @@
     [self.ping start];
     do {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:self.configuration.timeout]];
+                                 beforeDate:[NSDate distantFuture]];
     } while (self.shouldStop == NO);
     
     if ([self.delegate respondsToSelector:@selector(ping:didCompleteWithInfo:)]) {
@@ -95,6 +95,8 @@
     ZLog(@"%s", __FUNCTION__);
     NSString *ip = [self convertedAddress:address];
     [self.defaultInfo setValue:ip forKey:@"ip"];
+    
+    // Send
     [self sendWithPing:ping];
 }
 
@@ -118,10 +120,6 @@
         [self.delegate ping:self didFailWithInfo:info];
     }
     self.shouldStop = YES;
-    if (self.timer) {
-        [self.timer invalidate];
-        self.timer = nil;
-    }
 }
 
 
@@ -142,6 +140,7 @@
      didSendPacket:(NSData *)packet
     sequenceNumber:(uint16_t)sequenceNumber {
     ZLog(@"%s", __FUNCTION__);
+    self.sent++;
 }
 
 /*! A SimplePing delegate callback, called when the object fails to send a ping packet.
@@ -162,6 +161,7 @@ didFailToSendPacket:(NSData *)packet
     sequenceNumber:(uint16_t)sequenceNumber
              error:(NSError *)error {
     ZLog(@"%s", __FUNCTION__);
+    self.sent++;
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
     [info setValue:error forKey:@"error"];
     [info addEntriesFromDictionary:self.defaultInfo];
@@ -185,7 +185,7 @@ didFailToSendPacket:(NSData *)packet
 didReceivePingResponsePacket:(NSData *)packet
     sequenceNumber:(uint16_t)sequenceNumber {
     ZLog(@"%s", __FUNCTION__);
-    
+    self.received++;
     // ==== Data
     //由于IPV6在IPheader中不返回TTL数据，所以这里不返回TTL，改为返回Type
     //http://blog.sina.com.cn/s/blog_6a1837e901012ds8.html
@@ -229,7 +229,7 @@ didReceivePingResponsePacket:(NSData *)packet
 - (void)simplePing:(ZNDSimplePing *)ping
 didReceiveUnexpectedPacket:(NSData *)packet {
     ZLog(@"%s", __FUNCTION__);
-    
+    self.received++;
     // ==== Data
     //由于IPV6在IPheader中不返回TTL数据，所以这里不返回TTL，改为返回Type
     //http://blog.sina.com.cn/s/blog_6a1837e901012ds8.html
@@ -261,9 +261,12 @@ didReceiveUnexpectedPacket:(NSData *)packet {
     if (self.sent >= self.configuration.attempt) {
         return;
     }
-    self.sent++;
     self.sendDate = [NSDate date];
     [ping sendPingWithData:nil];
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
     self.timer = [NSTimer scheduledTimerWithTimeInterval:self.configuration.timeout
                                                   target:self
                                                 selector:@selector(timeoutWithTimer:)
@@ -272,7 +275,6 @@ didReceiveUnexpectedPacket:(NSData *)packet {
 }
 
 - (void)receiveWithPing:(ZNDSimplePing *)ping {
-    self.received++;
     self.sendDate = [NSDate date];
     if (self.timer) {
         [self.timer invalidate];
@@ -296,11 +298,12 @@ didReceiveUnexpectedPacket:(NSData *)packet {
     if ([self.delegate respondsToSelector:@selector(ping:didFailWithInfo:)]) {
         [self.delegate ping:self didFailWithInfo:info];
     }
-    if (self.sent >= self.configuration.attempt) {
-        [self.ping stop];
+    [self.ping stop];
+    self.received++; // receive count for failure
+    if (self.received >= self.configuration.attempt) {
         self.shouldStop = YES;
     } else {
-        [self sendWithPing:self.ping];
+        [self.ping start];
     }
 }
 

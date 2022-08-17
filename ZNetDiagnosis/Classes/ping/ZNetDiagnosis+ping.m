@@ -43,15 +43,10 @@
 }
 
 // MARK: - ping
-- (void)pingWithConfiguration:(ZNDPingConfiguration *)configuration {
-    [self pingWithConfiguration:configuration success:nil failure:nil completion:nil];
-}
-
-- (void)pingWithConfiguration:(ZNDPingConfiguration *)configuration
-                      success:(ZNDPingSuccess _Nullable)success
-                      failure:(ZNDPingFailure _Nullable)failure
-                   completion:(ZNDPingCompletion _Nullable)completion {
-    
+- (ZNDPingOperation *)createPingWithConfiguration:(ZNDPingConfiguration *)configuration
+                                          success:(ZNDPingSuccess _Nullable)success
+                                          failure:(ZNDPingFailure _Nullable)failure
+                                       completion:(ZNDPingCompletion _Nullable)completion {
     if (success) {
         [self setPingSuccess:success];
     }
@@ -71,6 +66,22 @@
             break;
     }
     pingOperation.delegate = self;
+    return pingOperation;
+}
+
+- (void)pingWithConfiguration:(ZNDPingConfiguration *)configuration {
+    [self pingWithConfiguration:configuration success:nil failure:nil completion:nil];
+}
+
+- (void)pingWithConfiguration:(ZNDPingConfiguration *)configuration
+                      success:(ZNDPingSuccess _Nullable)success
+                      failure:(ZNDPingFailure _Nullable)failure
+                   completion:(ZNDPingCompletion _Nullable)completion {
+    
+    ZNDPingOperation *pingOperation = [self createPingWithConfiguration:configuration
+                                                                success:success
+                                                                failure:failure
+                                                             completion:completion];
     [self addOperation:pingOperation];
 }
 

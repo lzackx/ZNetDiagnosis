@@ -22,6 +22,11 @@ typedef void (^ZNDTracerouteCompletion)(NSDictionary *info);
 @property (nonatomic, readwrite, copy) ZNDTracerouteFailure tracerouteFailure;
 @property (nonatomic, readwrite, copy) ZNDTracerouteCompletion tracerouteCompletion;
 
+- (ZNDTracerouteOperation *)createTracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration
+                                                      success:(ZNDTracerouteSuccess _Nullable)success
+                                                      failure:(ZNDTracerouteFailure _Nullable)failure
+                                                   completion:(ZNDTracerouteCompletion _Nullable)completion;
+
 - (void)tracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration;
 
 - (void)tracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration

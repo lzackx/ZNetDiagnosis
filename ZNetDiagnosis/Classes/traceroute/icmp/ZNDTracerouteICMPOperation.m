@@ -224,7 +224,7 @@ typedef enum ZNDTracerouteReceivedType{
         }
     }
     receivedModel.durations = [durations copy];
-    ZLog(@"TTL: %ld, Reply IP: %@, durations: %@", (long)receivedModel.ttl, receivedModel.replyIP, receivedModel.durations);
+    ZLog(@"TTL: %ld, Reply IP: %@, durations: %@", (long)receivedModel.ttl, receivedModel.replyIPs, receivedModel.durations);
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(traceroute:didFailWithInfo:)]) {
         NSMutableDictionary *info = [NSMutableDictionary dictionary];
         [info setValue:receivedModel forKey:@"log"];

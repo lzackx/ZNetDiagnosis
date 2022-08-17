@@ -44,15 +44,10 @@
 }
 
 // MARK: - traceroute
-- (void)tracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration {
-    [self tracerouteWithConfiguration:configuration success:nil failure:nil completion:nil];
-}
-
-- (void)tracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration
-                            success:(ZNDTracerouteSuccess _Nullable)success
-                            failure:(ZNDTracerouteFailure _Nullable)failure
-                         completion:(ZNDTracerouteCompletion _Nullable)completion {
-    
+- (ZNDTracerouteOperation *)createTracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration
+                                                      success:(ZNDTracerouteSuccess _Nullable)success
+                                                      failure:(ZNDTracerouteFailure _Nullable)failure
+                                                   completion:(ZNDTracerouteCompletion _Nullable)completion {
     if (success) {
         [self setTracerouteSuccess:success];
     }
@@ -75,6 +70,21 @@
             break;
     }
     tracerouteOperation.delegate = self;
+    return tracerouteOperation;
+}
+
+- (void)tracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration {
+    [self tracerouteWithConfiguration:configuration success:nil failure:nil completion:nil];
+}
+
+- (void)tracerouteWithConfiguration:(ZNDTracerouteConfiguration *)configuration
+                            success:(ZNDTracerouteSuccess _Nullable)success
+                            failure:(ZNDTracerouteFailure _Nullable)failure
+                         completion:(ZNDTracerouteCompletion _Nullable)completion {
+    ZNDTracerouteOperation *tracerouteOperation = [self createTracerouteWithConfiguration:configuration
+                                                                                  success:success
+                                                                                  failure:failure
+                                                                               completion:completion];
     [self addOperation:tracerouteOperation];
 }
 
