@@ -301,10 +301,18 @@ didReceiveUnexpectedPacket:(NSData *)packet {
     [self.ping stop];
     self.received++; // receive count for failure
     if (self.received >= self.configuration.attempt) {
-        self.shouldStop = YES;
+        // Awake Runloop after send over with timeout
+        [self performSelector:@selector(timeoutFinish)
+                     onThread:[NSThread currentThread]
+                   withObject:nil
+                waitUntilDone:NO];
     } else {
         [self.ping start];
     }
+}
+
+- (void)timeoutFinish {
+    self.shouldStop = YES;
 }
 
 // MARK: - Parse

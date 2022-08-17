@@ -46,9 +46,9 @@
 
 - (void)ping {
     ZNDPingConfiguration *pingConfigration = [[ZNDPingConfiguration alloc] init];
-    pingConfigration.target = @"m.google.com";
+    pingConfigration.target = @"github.com";
     pingConfigration.pingProtocol = ZNDPingProtocolICMP;
-    pingConfigration.attempt = 3;
+    pingConfigration.attempt = 4;
     pingConfigration.maxTTL = 64;
     pingConfigration.timeout = 1;
     
