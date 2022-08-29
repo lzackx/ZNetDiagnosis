@@ -20,7 +20,7 @@
 @property (nonatomic, readwrite, assign) BOOL shouldStop;
 @property (nonatomic, readwrite, strong) ZNDSimplePing *ping;
 @property (nonatomic, readwrite, strong) NSMutableDictionary *defaultInfo;
-@property (nonatomic, readwrite, assign) NSDate *sendDate;
+@property (nonatomic, readwrite, strong) NSDate *sendDate;
 @property (nonatomic, readwrite, strong) NSTimer *timer;
 
 @end
